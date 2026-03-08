@@ -652,6 +652,7 @@ function openOverlayModal({
   actionText = "Confirmar",
   cancelText = "Cancelar",
   hideCancel = false,
+  allowDismiss = true,
   onConfirm = null,
   onCancel = null,
   onDismiss = null,
@@ -668,12 +669,13 @@ function openOverlayModal({
 
   overlayConfirmHandler = onConfirm;
   overlayCancelHandler = onCancel;
-  overlayDismissHandler = onDismiss;
+  overlayDismissHandler = allowDismiss ? onDismiss : null;
 
   gameModalOverlay.classList.add("is-open");
   gameModalOverlay.setAttribute("aria-hidden", "false");
 
   overlayKeydownHandler = (event) => {
+    if (!allowDismiss) return;
     if (event.key !== "Escape") return;
     event.preventDefault();
     if (overlayDismissHandler) overlayDismissHandler();
@@ -717,9 +719,10 @@ function togglePause() {
   updateHUD("Partida en pausa");
   openOverlayModal({
     title: "Partida en pausa",
-    message: "¿Querés continuar la partida actual?",
+    message: 'El juego está detenido. Presioná "Reanudar" para continuar.',
     actionText: "Reanudar",
-    cancelText: "Cancelar",
+    hideCancel: true,
+    allowDismiss: false,
     onConfirm: () => {
       runStartTimestamp = Date.now();
       isPaused = false;
@@ -852,6 +855,7 @@ if (overlayCancel) {
 if (gameModalOverlay) {
   gameModalOverlay.addEventListener("click", (event) => {
     if (event.target !== gameModalOverlay) return;
+    if (!overlayDismissHandler && !overlayCancelHandler) return;
     if (overlayDismissHandler) overlayDismissHandler();
     if (overlayCancelHandler) overlayCancelHandler();
     closeOverlayModal();
