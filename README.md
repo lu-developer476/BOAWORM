@@ -7,7 +7,7 @@
 ![JSON](https://img.shields.io/badge/JSON-Data%20Format-000000?style=for-the-badge&logo=json&logoColor=white)
 ![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)
 
-DATACRAWL es una reinterpretación cyberpunk del clásico juego **Snake**, inspirada en la estética de **Cyberpunk Edgerunners**.
+Boaworm es una reinterpretación cyberpunk del clásico juego **Snake**, inspirada en la estética de **Cyberpunk Edgerunners**.
 
 La aplicación combina un **frontend interactivo en JavaScript** con un **backend Django** que gestiona un sistema de **leaderboard online**, persistencia de partidas y métricas de sesión.
 
@@ -88,7 +88,7 @@ El proyecto sigue una arquitectura Django clásica separando lógica de backend,
 ## Arquitectura del proyecto
 
 ```text
-DATACRAWL-main/
+Boaworm-main/
 │
 ├── config/
 │   ├── __init__.py
@@ -133,8 +133,8 @@ PORT=8000
 Clonar el repositorio
 
 ``` bash
-git clone https://github.com/tu-usuario/DATACRAWL.git
-cd DATACRAWL
+git clone https://github.com/tu-usuario/Boaworm.git
+cd Boaworm
 ```
 
 Crear entorno virtual
